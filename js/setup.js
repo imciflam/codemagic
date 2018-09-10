@@ -24,20 +24,20 @@ var getRandomInteger = function (min, max) {
 var wizards = 
 [
 {   
-	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_NAMES.length)],
+	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_SURNAMES.length)],
 	coatColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
 	eyesColor: 'rgb(348,100,90)'
 },
 {
-	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_NAMES.length)],
+	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_SURNAMES.length)],
 	coatColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
 },
 {
-	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_NAMES.length)],
+	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_SURNAMES.length)],
 	coatColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16)
 },
 {
-	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_NAMES.length)],
+	name: WIZARD_NAMES[getRandomInteger(0, WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomInteger(0, WIZARD_SURNAMES.length)],
 	coatColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
 	eyesColor: 'rgb(0, 204, 51)'
 }
