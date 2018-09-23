@@ -1,7 +1,7 @@
 'use strict';
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
-//var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 //var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 //var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
 
@@ -15,6 +15,8 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 .content;
 var userDialogOpen = document.querySelector('.setup-open');
 var userDialogClose = document.querySelector('.setup-close');
+var coatColoring = document.querySelector('.setup-wizard .wizard-coat');
+var eyesColoring = document.querySelector('.setup-wizard .wizard-eyes');
 
 var openPopup = function() 
 {
@@ -24,6 +26,12 @@ var openPopup = function()
 var closePopup = function() 
 {
 	userDialog.classList.add('hidden');
+};
+
+var changeCoat = function()
+{
+	coatColoring.style.fill= COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
+
 };
 
 userDialogOpen.addEventListener('click', function()
@@ -44,13 +52,19 @@ userDialogClose.addEventListener('click', function()
 	closePopup();
 });
 
-userDialogClose.addEventListener('keydown',function(evt)
+userDialogClose.addEventListener('keydown', function(evt)
 {
 	if(evt.keyCode===13)
 	{
 		closePopup();
 	}
 });
+
+coatColoring.addEventListener('click', function()
+{
+	changeCoat();
+});
+
 
 var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
