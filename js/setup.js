@@ -2,8 +2,8 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-//var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-//var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
+var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
 
 var WIZARD_NAMES = ['Варянус', 'Машанус', 'Морэльный', 'Олегус']
 var WIZARD_SURNAMES = ['Юзанус', 'Казус', 'Саллянус', 'Павукан']
@@ -17,6 +17,7 @@ var userDialogOpen = document.querySelector('.setup-open');
 var userDialogClose = document.querySelector('.setup-close');
 var coatColoring = document.querySelector('.setup-wizard .wizard-coat');
 var eyesColoring = document.querySelector('.setup-wizard .wizard-eyes');
+var fireballColoring = document.querySelector('.setup-fireball-wrap');
 
 var openPopup = function() 
 {
@@ -31,6 +32,18 @@ var closePopup = function()
 var changeCoat = function()
 {
 	coatColoring.style.fill= COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
+
+};
+
+var changeEyes = function()
+{
+	eyesColoring.style.fill= EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
+
+};
+
+var changeFireball = function()
+{
+	eyesColoring.style.fill= EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
 
 };
 
