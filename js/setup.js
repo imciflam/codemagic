@@ -26,16 +26,31 @@ var closePopup = function()
 	userDialog.classList.add('hidden');
 };
 
-userDialogOpen.addEventListener('click', function(){
-	userDialog.classList.remove('hidden');
-	document.addEventListener('keydown', function(evt)
+userDialogOpen.addEventListener('click', function()
+{
+	openPopup();
+});
+
+userDialogOpen.addEventListener('keydown', function(evt)
+{
+	if (evt.keyCode ===13)
 	{
-		if (evt.keyCode ===27)
-		{
-			setup.classList.add('hidden');
-		}
-	})
-})
+		openPopup();
+	}
+});
+
+userDialogClose.addEventListener('click', function()
+{
+	closePopup();
+});
+
+userDialogClose.addEventListener('keydown',function(evt)
+{
+	if(evt.keyCode===13)
+	{
+		closePopup();
+	}
+});
 
 var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
