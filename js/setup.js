@@ -9,12 +9,33 @@ var WIZARD_NAMES = ['Варянус', 'Машанус', 'Морэльный', '�
 var WIZARD_SURNAMES = ['Юзанус', 'Казус', 'Саллянус', 'Павукан']
 
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
 document.querySelector('.setup-similar').classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 .content;
+var userDialogOpen = document.querySelector('.setup-open');
+var userDialogClose = document.querySelector('.setup-close');
 
+var openPopup = function() 
+{
+	userDialog.classList.remove('hidden');
+};
+
+var closePopup = function() 
+{
+	userDialog.classList.add('hidden');
+};
+
+userDialogOpen.addEventListener('click', function(){
+	userDialog.classList.remove('hidden');
+	document.addEventListener('keydown', function(evt)
+	{
+		if (evt.keyCode ===27)
+		{
+			setup.classList.add('hidden');
+		}
+	})
+})
 
 var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
