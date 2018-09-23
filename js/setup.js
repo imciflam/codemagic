@@ -43,9 +43,10 @@ var changeEyes = function()
 
 var changeFireball = function()
 {
-	eyesColoring.style.fill= EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
-
+	fireballColoring.style.background= FIREBALL_COLORS[getRandomInteger(0, FIREBALL_COLORS.length)];
 };
+
+
 
 userDialogOpen.addEventListener('click', function()
 {
@@ -78,6 +79,15 @@ coatColoring.addEventListener('click', function()
 	changeCoat();
 });
 
+eyesColoring.addEventListener('click', function()
+{
+	changeEyes();
+});
+
+fireballColoring.addEventListener('click', function()
+{
+	changeFireball();
+})
 
 var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
