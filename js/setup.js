@@ -136,11 +136,14 @@ dialogHandle.addEventListener('mousedown', function (evt)
     y: evt.clientY
   };
 
+	 var dragged = false;
+
     //document.addEventListener("mousemove", onMouseMove);
     //document.addEventListener("mouseup", onMouseUp);
     var onMouseMove = function (moveEvt)
     {
     moveEvt.preventDefault();
+    dragged = true;
     //find cursor's displacement during one event
     //the difference between start coords and current coords
     var shift = {
@@ -162,6 +165,15 @@ dialogHandle.addEventListener('mousedown', function (evt)
       upEvt.preventDefault();
        document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
+      if(dragged)
+      {
+      	var onClickPreventDefault = function(evt)
+      	{
+      		evt.preventDefault();
+      		document.removeEventListener("click", onClickPreventDefault);
+      	}
+      dialogHandle.addEventListener("click", onClickPreventDefault);
+      } 
     }
 
      document.addEventListener("mousemove", onMouseMove);
