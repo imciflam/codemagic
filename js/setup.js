@@ -4,7 +4,6 @@ var ENTER_KEYCODE = 13;
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
-
 var WIZARD_NAMES = ['Варянус', 'Машанус', 'Морэльный', 'Олегус']
 var WIZARD_SURNAMES = ['Юзанус', 'Казус', 'Саллянус', 'Павукан']
 
@@ -18,6 +17,47 @@ var userDialogClose = document.querySelector('.setup-close');
 var coatColoring = document.querySelector('.setup-wizard .wizard-coat');
 var eyesColoring = document.querySelector('.setup-wizard .wizard-eyes');
 var fireballColoring = document.querySelector('.setup-fireball-wrap'); 
+
+
+
+//load.js
+'use strict';
+(function()
+{
+	var URL = "https://js.dump.academy/code-and-magick/data";
+	window.load = function(onSuccess, onError)
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.responseType = "json";
+		xhr.open("GET", URL);
+		xhrr.addEventListener("load", function()
+		{
+			onSuccess(xhr.response);
+		});
+		xhr.send();
+	};
+})();
+
+
+
+
+(function()
+{
+	var URL = "https://js.dump.academy/code-and-magick";
+	window.upload = function(data, onSuccess)
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.responseType = "json";
+		xhr.addEventListener("load",
+			function()
+			{
+				onSuccess(xhr.response);
+			});
+		xhr.open("POST", URL);
+		xhr.send(data);
+	};
+})();
+
 
 var openPopup = function() 
 {
@@ -121,9 +161,24 @@ for (var i=0; i<wizards.length; i++)
 	wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
 	wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
 	wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor; 
-	
 	similarListElement.appendChild(wizardElement);
 }
+
+(function()
+{
+var form = userDialog.querySelector(".setup-wizard-form");
+form.addEventListener('submit',
+	function (evt)
+	{
+		window.upload(new FormData(form),
+			function(response)
+			{
+				userDialog.classList.add("hidden");
+			});
+		evt.preventDefault();
+	 });
+	
+ })();
 
 
 var dialogHandle = userDialog.querySelector('.upload');
