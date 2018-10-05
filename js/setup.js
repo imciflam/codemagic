@@ -22,6 +22,8 @@ var fireballColoring = document.querySelector('.setup-fireball-wrap');
 
 //load.js
 'use strict';
+
+ 
 (function()
 {
 	var URL = "https://js.dump.academy/code-and-magick/data";
@@ -30,14 +32,21 @@ var fireballColoring = document.querySelector('.setup-fireball-wrap');
 		var xhr = new XMLHttpRequest();
 		xhr.responseType = "json";
 		xhr.open("GET", URL);
-		xhrr.addEventListener("load", function()
+		xhr.addEventListener("load", function()
 		{
+			if (xhr.status ===200)
+			{
 			onSuccess(xhr.response);
+			}
+			else
+			{
+				onError("Status: " + xhr.status + " " + xhr.statusText);
+			}
 		});
 		xhr.send();
 	};
 })();
-
+ 
 
 
 
@@ -133,6 +142,63 @@ var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+
+
+//setup.js
+
+(function()
+{
+	var userDialog = document.querySelector(".setup");
+	userDialog.classList.remove("hidden");
+	var similarListElement = userDialog.querySelector(".setup-similar-list");
+	var similarWizardTemplate = document.querySelector("#similar-wizard-template").content;
+	//var wizards = [];//mock
+	var renderWizard = function(wizard)
+	{
+		var wizardElement = similarWizardTemplate.cloneNode(true);
+		wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+		wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+		wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes; 
+		return wizardElement;
+	}
+
+	window.load(function(wizards)
+	{
+	var fragment = document.createDocumentFragment();
+	for (var i=0; i<4; i++)
+	{
+		fragment.appendChild(renderWizard(wizards[i]));
+	}
+	similarListElement.appendChild(fragment);
+	userDialog.querySelector(".setup-similar").classList.remove("hidden");
+	});
+
+	var form = userDialog.querySelector(".setup-wizard-form");
+	form.addEventListener('submit',
+	function (evt)
+	{
+		window.upload(new FormData(form),
+			function(response)
+			{
+				userDialog.classList.add("hidden");
+			});
+		evt.preventDefault();
+	 });
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 var wizards = 
 [
 {   
@@ -153,32 +219,21 @@ var wizards =
 	coatColor: 'rgb(0, 51, 255)',
 	eyesColor: 'rgb(0, 204, 51)'
 }
-]
-for (var i=0; i<wizards.length; i++)
+]	
+
+//var fragment = document.createDocumentFragment();
+/*for (var i=0; i<4; i++)
 {
 	var wizardElement = similarWizardTemplate.cloneNode(true);//глубокое клонирование, содержит полную разметку
-
 	wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
 	wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
 	wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor; 
 	similarListElement.appendChild(wizardElement);
-}
+	//fragment.appendChild
 
-(function()
-{
-var form = userDialog.querySelector(".setup-wizard-form");
-form.addEventListener('submit',
-	function (evt)
-	{
-		window.upload(new FormData(form),
-			function(response)
-			{
-				userDialog.classList.add("hidden");
-			});
-		evt.preventDefault();
-	 });
-	
- })();
+
+}*/
+
 
 
 var dialogHandle = userDialog.querySelector('.upload');
