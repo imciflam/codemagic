@@ -1,6 +1,6 @@
 'use strict';
-var ESC_KEYCODE = 27;
-var ENTER_KEYCODE = 13;
+//var ESC_KEYCODE = 27;
+//var ENTER_KEYCODE = 13;
  
 
 var userDialog = document.querySelector('.setup');
@@ -14,54 +14,6 @@ var coatColoring = document.querySelector('.setup-wizard .wizard-coat');
 var eyesColoring = document.querySelector('.setup-wizard .wizard-eyes');
 var fireballColoring = document.querySelector('.setup-fireball-wrap'); 
 
-
-
-//load.js
-'use strict';
-
- 
-(function()
-{
-	var URL = "https://js.dump.academy/code-and-magick/data";
-	window.load = function(onSuccess, onError)
-	{
-		var xhr = new XMLHttpRequest();
-		xhr.responseType = "json";
-		xhr.open("GET", URL);
-		xhr.addEventListener("load", function()
-		{
-			if (xhr.status ===200)
-			{
-			onSuccess(xhr.response);
-			}
-			else
-			{
-				onError("Status: " + xhr.status + " " + xhr.statusText);
-			}
-		});
-		xhr.send();
-	};
-})();
- 
-
-
-
-(function()
-{
-	var URL = "https://js.dump.academy/code-and-magick";
-	window.upload = function(data, onSuccess)
-	{
-		var xhr = new XMLHttpRequest();
-		xhr.responseType = "json";
-		xhr.addEventListener("load",
-			function()
-			{
-				onSuccess(xhr.response);
-			});
-		xhr.open("POST", URL);
-		xhr.send(data);
-	};
-})();
 
 
 var openPopup = function() 
@@ -183,16 +135,7 @@ var getRandomInteger = function (min, max) {
 
 })();
 
-
-
-
-
-
-
-
-
-
-
+ 
 /*
 //mock data 
 var wizards = 
