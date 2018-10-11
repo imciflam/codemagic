@@ -29,10 +29,17 @@ var closePopup = function()
 	userDialog.classList.add('hidden');
 };
 
+
+
+
+var updateWizards = function()
+{
+	window.render(wizards);
+}
+
 var changeCoat = function()
 {
 	coatColoring.style.fill= COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
-
 };
 
 var changeEyes = function()
@@ -136,6 +143,27 @@ var getRandomInteger = function (min, max) {
 		evt.preventDefault();
 	 });
 
+	var wizards = [];
+	var successHandler = function(data)
+	{
+		wizards = data;
+		window.render(wizards);
+	}
+
+	var errorHandler = function(errorMessage)
+	{
+		var node = document.createElement("div");
+		node.style = "z-index: 100; margin: 0 auto; text-align: center; background-color: red";
+		node.style.position = "absolute";
+		node.style.left = 0;
+		node.style.right = 0;
+		node.style.fontSize = "30px";
+		node.textContent = errorMessage;
+		document.body.insertAdjacentElement("afterbegin", node);
+	}
+	var URL = "https://js.dump.academy/code-and-magick/data";
+	window.load = function(onSuccess, onError){};
+
 })();
 
  
@@ -234,4 +262,12 @@ dialogHandle.addEventListener('mousedown', function (evt)
 
      document.addEventListener("mousemove", onMouseMove);
      document.addEventListener("mouseup", onMouseUp);
+
+
+
+
+
+
+
+
 });
