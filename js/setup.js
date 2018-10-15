@@ -95,7 +95,14 @@ userDialogClose.addEventListener('keydown', function(evt)
 		{
 			return it.colorEyes === eyesColor;
 		});
-		window.render(sameCoatWizards.concat(sameEyesWizards).concat(wizards));
+
+		var filteredWizards = sameCoatWizards.concat(sameEyesWizards).concat(wizards);
+
+		var uniqueWizards = filteredWizards.filter(function(it, i)
+		{
+			return filteredWizards.indexOf(it)===i;
+		});
+		window.render(uniqueWizards);
 	}
 
 	var getRandomInteger = function (min, max) 
