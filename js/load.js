@@ -3,8 +3,9 @@
 (function()
 {
 	var URL = "https://js.dump.academy/code-and-magick/data";
-	window.load = function(onSuccess, onError)
+	window.load = function(onSuccess, onError, url)
 	{
+		url = url || URL;
 		var xhr = new XMLHttpRequest();
 		xhr.responseType = "json";
 		xhr.open("GET", URL);

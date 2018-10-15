@@ -100,17 +100,10 @@ var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+(function () {
 
-
-//setup.js
-
-(function()
-{
-	var userDialog = document.querySelector(".setup");
-	userDialog.classList.remove("hidden");
-	var similarListElement = userDialog.querySelector(".setup-similar-list");
 	var similarWizardTemplate = document.querySelector("#similar-wizard-template").content;
-	//var wizards = [];//mock
+		
 	var renderWizard = function(wizard)
 	{
 		var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -119,6 +112,9 @@ var getRandomInteger = function (min, max) {
 		wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes; 
 		return wizardElement;
 	}
+	 var similarListElement = userDialog.querySelector(".setup-similar-list");
+	 	//var wizards = [];//mock
+
 
 	window.load(function(wizards)
 	{
@@ -131,6 +127,15 @@ var getRandomInteger = function (min, max) {
 	userDialog.querySelector(".setup-similar").classList.remove("hidden");
 	});
 
+})();
+
+//setup.js
+
+(function()
+{
+	var userDialog = document.querySelector(".setup");
+	userDialog.classList.remove("hidden");
+ 
 	var form = userDialog.querySelector(".setup-wizard-form");
 	form.addEventListener('submit',
 	function (evt)
