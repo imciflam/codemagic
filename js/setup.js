@@ -100,6 +100,8 @@ var getRandomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+
+//render
 (function () {
 
 	var similarWizardTemplate = document.querySelector("#similar-wizard-template").content;
@@ -112,10 +114,7 @@ var getRandomInteger = function (min, max) {
 		wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes; 
 		return wizardElement;
 	}
-	 var similarListElement = userDialog.querySelector(".setup-similar-list");
-	 	//var wizards = [];//mock
-
-
+	var similarListElement = userDialog.querySelector(".setup-similar-list");
 	window.load(function(wizards)
 	{
 	var fragment = document.createDocumentFragment();
