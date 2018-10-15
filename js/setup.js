@@ -1,8 +1,7 @@
 'use strict';
 //var ESC_KEYCODE = 27;
 //var ENTER_KEYCODE = 13;
-var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+ 
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'] 
 
 
@@ -62,13 +61,7 @@ userDialogClose.addEventListener('keydown', function(evt)
 		closePopup();
 	}
 });
- 
-
-var getRandomInteger = function (min, max) 
-{
-  return Math.floor(Math.random() * (max - min)) + min;
-};
-
+  
 
 //render
  
@@ -79,6 +72,9 @@ var getRandomInteger = function (min, max)
 
 (function()
 { 
+	var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+	var EYE_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+
 	var coatColoring = document.querySelector('.setup-wizard .wizard-coat');
 	var eyesColoring = document.querySelector('.setup-wizard .wizard-eyes');
 	var fireballColoring = document.querySelector('.setup-fireball-wrap'); 
@@ -96,16 +92,39 @@ var getRandomInteger = function (min, max)
 			});
 		evt.preventDefault();
 	 }); 
-	
-	var changeCoat = function()
+
+	var updateWizards = function()
 	{
-		coatColoring.style.fill= COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
+		var sameCoatWizards = wizards.filter(function(it)
+		{
+			return it.colorCoat === coatColor;
+		});
+		var sameEyesWizards = wizards.filter(function(it)
+		{
+			return it.colorEyes === eyesColor;
+		});
+		window.render(wizards);
+	}
+
+	var getRandomInteger = function (min, max) 
+	{
+	  return Math.floor(Math.random() * (max - min)) + min;
 	};
 
+	var coatColor;
+	var changeCoat = function()
+	{
+		var newColor = COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
+		coatColoring.style.fill = newColor;
+		coatColor = newColor;
+	};
+
+	var eyesColor;
 	var changeEyes = function()
 	{
-		eyesColoring.style.fill= EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
-
+		var newColor = EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
+		eyesColoring.style.fill = newColor;
+		eyesColor = newColor;
 	};
 
 	var changeFireball = function()
@@ -113,7 +132,7 @@ var getRandomInteger = function (min, max)
 		fireballColoring.style.background= FIREBALL_COLORS[getRandomInteger(0, FIREBALL_COLORS.length)];
 	};
 
- 
+
 	coatColoring.addEventListener('click', function()
 	{
 		changeCoat();
