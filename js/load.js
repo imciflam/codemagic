@@ -17,7 +17,7 @@
 			}
 			else
 			{
-			window.onError("Status: " + xhr.status + " " + xhr.statusText);
+			window.onError("Server status: " + xhr.status + " " + xhr.statusText);
 			}
 		});
 		xhr.send();

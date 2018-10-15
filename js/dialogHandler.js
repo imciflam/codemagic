@@ -1,6 +1,6 @@
 (function()
 { 
-  
+
 window.userDialog = document.querySelector('.setup');
 var dialogHandle = userDialog.querySelector('.upload');
 dialogHandle.addEventListener('mousedown', function (evt)
@@ -52,6 +52,5 @@ dialogHandle.addEventListener('mousedown', function (evt)
 
      document.addEventListener("mousemove", onMouseMove);
      document.addEventListener("mouseup", onMouseUp);
-
 });
 })();
