@@ -95,7 +95,7 @@ userDialogClose.addEventListener('keydown', function(evt)
 		{
 			return it.colorEyes === eyesColor;
 		});
-		window.render(sameCoatWizards.concat(sameEyesWizards));
+		window.render(sameCoatWizards.concat(sameEyesWizards).concat(wizards));
 	}
 
 	var getRandomInteger = function (min, max) 
