@@ -13,7 +13,8 @@
 		return wizardElement;
 	}
 	var similarListElement = document.querySelector(".setup-similar-list");
-	window.load(function(wizards)
+
+	window.render = function(wizards)
 	{
 	var fragment = document.createDocumentFragment();
 	for (var i=0; i<4; i++)
@@ -22,6 +23,6 @@
 	}
 	similarListElement.appendChild(fragment);
 	document.querySelector(".setup-similar").classList.remove("hidden");
-	});
+	};
 
 })();

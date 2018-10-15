@@ -3,7 +3,7 @@
 (function()
 {
 	var URL = "https://js.dump.academy/code-and-magick/data";
-	window.load = function(onSuccess, onError, url)
+	window.load = function(url, onSuccess, onError)
 	{
 		url = url || URL;
 		var xhr = new XMLHttpRequest();
@@ -13,11 +13,11 @@
 		{
 			if (xhr.status ===200)
 			{
-			onSuccess(xhr.response);
+			window.onSuccess(xhr.response);
 			}
 			else
 			{
-				onError("Status: " + xhr.status + " " + xhr.statusText);
+			window.onError("Status: " + xhr.status + " " + xhr.statusText);
 			}
 		});
 		xhr.send();

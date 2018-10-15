@@ -25,14 +25,6 @@ var closePopup = function()
 	userDialog.classList.add('hidden');
 };
 
-
-
-
-var updateWizards = function()
-{
-	window.render(wizards);
-}
-
  
 
 
@@ -103,7 +95,7 @@ userDialogClose.addEventListener('keydown', function(evt)
 		{
 			return it.colorEyes === eyesColor;
 		});
-		window.render(wizards);
+		window.render(sameCoatWizards.concat(sameEyesWizards));
 	}
 
 	var getRandomInteger = function (min, max) 
@@ -117,6 +109,7 @@ userDialogClose.addEventListener('keydown', function(evt)
 		var newColor = COAT_COLORS[getRandomInteger(0, COAT_COLORS.length)];
 		coatColoring.style.fill = newColor;
 		coatColor = newColor;
+		updateWizards();
 	};
 
 	var eyesColor;
@@ -125,6 +118,7 @@ userDialogClose.addEventListener('keydown', function(evt)
 		var newColor = EYE_COLORS[getRandomInteger(0, EYE_COLORS.length)];
 		eyesColoring.style.fill = newColor;
 		eyesColor = newColor;
+		updateWizards();
 	};
 
 	var changeFireball = function()
@@ -150,13 +144,13 @@ userDialogClose.addEventListener('keydown', function(evt)
 
 
 	var wizards = [];
-	var successHandler = function(data)
+	window.onSuccess = function(data)
 	{
 		wizards = data;
 		window.render(wizards);
 	}
 
-	var errorHandler = function(errorMessage)
+	 window.onError = function(errorMessage)
 	{
 		var node = document.createElement("div");
 		node.style = "z-index: 100; margin: 0 auto; text-align: center; background-color: red";
@@ -167,9 +161,8 @@ userDialogClose.addEventListener('keydown', function(evt)
 		node.textContent = errorMessage;
 		document.body.insertAdjacentElement("afterbegin", node);
 	}
-	var URL = "https://js.dump.academy/code-and-magick/data";
-	window.load = function(URL, onSuccess, onError){};
-
+	var url  = "https://js.dump.academy/code-and-magick/data";
+    window.load(url, onSuccess, onError);
 })();
 
 
