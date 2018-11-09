@@ -1,7 +1,6 @@
 window.renderStatistics = function(ctx, names, times) {
 
   var COLUMN_HEIGHT = 150;
-  
   var COLUMN_WIDTH = 40;
   var COLUMN_DISTANCE = COLUMN_WIDTH + 50;
   var maxTime = Math.max.apply(null, times);
